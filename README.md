@@ -65,9 +65,3 @@ The application expects a CSV file with the following headers:
 - `VENUE`: The stadium or location.
 - `START_TIME`: The scheduled date and time (YYYY-MM-DD HH:MM:SS).
 
-## 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-Developed with ❤️ for sports analytics and machine learning enthusiasts.
