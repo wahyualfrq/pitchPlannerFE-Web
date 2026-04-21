@@ -8,10 +8,10 @@ const FilterPanel = ({
   availableTeams, availableVenues 
 }) => {
   return (
-    <div className="glass-panel p-6 rounded-2xl mb-10 border border-white/5 shadow-2xl">
+    <div className="glass-panel p-6 mb-10 border-l-4 border-l-[#ffd700]">
       <div className="flex flex-col md:flex-row gap-6 items-center">
-        <div className="flex items-center gap-3 text-white font-bold text-lg border-r border-white/10 pr-6 w-full md:w-auto">
-          <Filter className="text-accent w-5 h-5" />
+        <div className="flex items-center gap-3 text-white font-bold text-sm uppercase tracking-widest border-r border-white/10 pr-6 w-full md:w-auto">
+          <Filter className="text-[#ffd700] w-5 h-5 text-glow" />
           Filters
         </div>
         
@@ -20,11 +20,11 @@ const FilterPanel = ({
             <select 
               value={filterTeam}
               onChange={(e) => setFilterTeam(e.target.value)}
-              className="w-full bg-navy-900/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-300 appearance-none focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
+              className="w-full bg-[#111111]/80 border border-[#ffd700]/20 px-4 py-3 text-sm text-white appearance-none focus:outline-none focus:border-[#ffd700] transition-all rounded-none"
             >
-              <option value="">All Teams</option>
+              <option value="" className="bg-[#0a0a0a]">All Teams</option>
               {availableTeams?.map(team => (
-                <option key={team} value={team}>{team}</option>
+                <option key={team} value={team} className="bg-[#0a0a0a]">{team}</option>
               ))}
             </select>
           </div>
@@ -33,11 +33,11 @@ const FilterPanel = ({
             <select 
               value={filterVenue}
               onChange={(e) => setFilterVenue(e.target.value)}
-              className="w-full bg-navy-900/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-300 appearance-none focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
+              className="w-full bg-[#111111]/80 border border-[#ffd700]/20 px-4 py-3 text-sm text-white appearance-none focus:outline-none focus:border-[#ffd700] transition-all rounded-none"
             >
-              <option value="">All Venues</option>
+              <option value="" className="bg-[#0a0a0a]">All Venues</option>
               {availableVenues?.map(venue => (
-                <option key={venue} value={venue}>{venue}</option>
+                <option key={venue} value={venue} className="bg-[#0a0a0a]">{venue}</option>
               ))}
             </select>
           </div>
@@ -47,7 +47,7 @@ const FilterPanel = ({
               type="date" 
               value={filterDate}
               onChange={(e) => setFilterDate(e.target.value)}
-              className="w-full bg-navy-900/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-300 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
+              className="w-full bg-[#111111]/80 border border-[#ffd700]/20 px-4 py-3 text-sm text-white focus:outline-none focus:border-[#ffd700] transition-all rounded-none [color-scheme:dark]"
             />
           </div>
         </div>
@@ -58,7 +58,7 @@ const FilterPanel = ({
             setFilterVenue('');
             setFilterDate('');
           }}
-          className="w-full md:w-auto px-6 py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl border border-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2 font-semibold"
+          className="w-full md:w-auto px-6 py-3 bg-transparent hover:bg-[#ffd700]/10 text-slate-300 hover:text-white border border-[#ffd700]/30 hover:border-[#ffd700] transition-all flex items-center justify-center gap-2 font-bold text-xs uppercase tracking-widest rounded-none"
         >
           Clear
         </button>

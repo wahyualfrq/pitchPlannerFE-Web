@@ -8,11 +8,12 @@ export default {
     extend: {
       colors: {
         accent: {
-          DEFAULT: '#f59e0b',
-          light: '#fcd34d',
-          dark: '#d97706',
+          DEFAULT: '#D4AF37',
+          light: '#E9C46A',
+          dark: '#996515',
         },
         navy: {
+          950: '#020617',
           900: '#0f172a',
           800: '#1e293b',
           700: '#334155',

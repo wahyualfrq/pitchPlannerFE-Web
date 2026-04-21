@@ -39,29 +39,34 @@ pitchPlannerFE/
 ## ⚙️ Installation & Setup
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/pitchPlannerFE.git
 cd pitchPlannerFE
 ```
 
 ### 2. Install dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Run the development server
+
 ```bash
 npm run dev
 ```
 
 ### 4. Backend Setup
-Ensure you have the PitchPlanner Backend (Flask) running on `http://localhost:5000`. The frontend communicates with this API to process optimization requests.
+
+Ensure the frontend communicates with the PitchPlanner Backend API (https://pitchplannerbe-model.onrender.com) to process optimization requests.
 
 ## 📊 Dataset Format
+
 The application expects a CSV file with the following headers:
+
 - `MATCH NO`: Unique identifier for the match.
 - `HOME TEAM`: Name of the home team.
 - `AWAY TEAM`: Name of the away team.
 - `VENUE`: The stadium or location.
 - `START_TIME`: The scheduled date and time (YYYY-MM-DD HH:MM:SS).
-
