@@ -51,7 +51,7 @@ const Home = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const url = 'https://pitchplannerbe-model.onrender.com/api/optimize';
+      const url = import.meta.env.VITE_API_URL || 'https://pitchplannerbe-model.onrender.com/api/optimize';
       let options = { method: 'GET' };
 
       if (file) {

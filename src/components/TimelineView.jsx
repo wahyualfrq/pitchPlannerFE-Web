@@ -8,7 +8,8 @@ import {
   ThumbsUp, FileSpreadsheet, Download
 } from 'lucide-react';
 
-/* --- Shared Components & Assets --- */
+
+
 
 const PitchBackground = () => (
   <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.02] md:opacity-[0.03]">
@@ -47,7 +48,8 @@ const StatusBadge = ({ score }) => {
   );
 };
 
-/* --- Main Modal (The Control Panel) --- */
+
+
 
 export const MatchControlPanel = ({ match, onClose, onOptimize, onUpdateMatch, schedule, venues }) => {
   const [isRegenerating, setIsRegenerating] = useState(false);
@@ -197,7 +199,8 @@ export const MatchControlPanel = ({ match, onClose, onOptimize, onUpdateMatch, s
         exit={{ opacity: 0, scale: 0.9, y: 30 }}
         className="w-full max-w-5xl bg-[#080808] border border-white/10 rounded-[32px] md:rounded-[40px] overflow-hidden shadow-[0_0_120px_rgba(0,0,0,1)] relative z-10 flex flex-col md:flex-row max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible scrollbar-hide no-scrollbar"
       >
-        {/* Left Side: Match Branding & Logic */}
+
+
         <div className="w-full md:w-2/5 p-8 md:p-14 bg-gradient-to-br from-white/5 to-transparent border-b md:border-b-0 md:border-r border-white/5 relative">
           <PitchBackground />
           
@@ -263,7 +266,8 @@ export const MatchControlPanel = ({ match, onClose, onOptimize, onUpdateMatch, s
           </div>
         </div>
 
-        {/* Right Side: Control & Adjust */}
+
+
         <div className="flex-1 p-8 md:p-14 space-y-8 md:space-y-10">
           <div className="flex justify-between items-center">
             <div className="flex gap-6 md:gap-8">

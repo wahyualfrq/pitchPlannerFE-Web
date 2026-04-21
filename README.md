@@ -1,72 +1,67 @@
-# 🏏 PitchPlanner: AI-Powered Match Scheduling
+# 🏏 PitchPlanner: Smart Match Scheduling System
 
-PitchPlanner is a cutting-edge web application designed to solve complex tournament scheduling problems using advanced algorithms. By leveraging a **Greedy Algorithm**, it optimizes match allocations to minimize travel overhead, resolve venue conflicts, and ensure a balanced schedule for all participating teams.
+PitchPlanner is a high-performance web application designed for professional sports tournament scheduling. It utilizes an intelligent **Greedy Optimization Algorithm** to resolve venue conflicts, minimize travel overhead, and ensure a balanced schedule for teams.
 
-![PitchPlanner Hero Section](https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000&auto=format&fit=crop)
+Built with a **Premium Dark Aesthetic**, it offers a cinematic experience for analysts and tournament organizers.
 
-## 🚀 Features
+## ✨ Core Features
 
-- **AI Optimization**: Uses a robust Greedy Algorithm to select the best match schedule from a pool of potential fixtures.
-- **Dynamic Dataset Upload**: Support for custom `.csv` match datasets.
-- **Real-time Filtering**: Filter optimized schedules by Team, Venue, and Date.
-- **Premium UI/UX**: Modern, dark-themed interface built with React and Tailwind CSS, featuring glassmorphism and smooth animations.
-- **Analytics Dashboard**: Instant statistics on original, selected, and rejected matches.
-- **Responsive Design**: Fully optimized for desktop, tablet, and mobile views.
+- **AI-Powered Optimization**: Automatically generates conflict-free schedules using advanced heuristics.
+- **Interactive Control Panel**: Manually adjust kickoff times and venues with real-time conflict validation.
+- **Cinematic UI/UX**: Professional-grade interface featuring glassmorphism, floating animations, and fluid transitions.
+- **Dynamic Data Support**: Import custom CSV datasets and preview them instantly.
+- **Comprehensive Analytics**: Monitor efficiency, match counts, and optimization scores.
+- **Production Ready**: Optimized for Netlify deployment with SPA routing and environment variable support.
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Backend (Required)**: [Flask](https://flask.palletsprojects.com/) (Python)
+- **Frontend**: React 19 (Vite 8)
+- **Styling**: Tailwind CSS (PostCSS)
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Backend API**: Python Flask (Optimized for Render)
 
-## 📂 Project Structure
+## 🚀 Quick Start
 
-```text
-pitchPlannerFE/
-├── src/
-│   ├── components/      # Reusable UI components (Navbar, Hero, MatchCard, etc.)
-│   ├── pages/           # Main application pages
-│   ├── data/            # Static data and constants
-│   ├── assets/          # Static assets (images, logos)
-│   └── App.jsx          # Root component
-├── public/              # Static public files
-├── tailwind.config.js   # Tailwind CSS configuration
-└── vite.config.js       # Vite configuration
-```
-
-## ⚙️ Installation & Setup
-
-### 1. Clone the repository
-
+### 1. Clone & Install
 ```bash
-git clone https://github.com/yourusername/pitchPlannerFE.git
-cd pitchPlannerFE
-```
-
-### 2. Install dependencies
-
-```bash
+git clone https://github.com/wahyualfrq/pitchPlannerFE-Web.git
+cd pitchPlannerFE-Web
 npm install
 ```
 
-### 3. Run the development server
+### 2. Environment Setup
+Create a `.env` file in the root:
+```env
+VITE_API_URL=https://pitchplannerbe-model.onrender.com/api/optimize
+```
 
+### 3. Development
 ```bash
 npm run dev
 ```
 
-### 4. Backend Setup
+### 4. Build for Production
+```bash
+npm run build
+```
 
-Ensure the frontend communicates with the PitchPlanner Backend API (https://pitchplannerbe-model.onrender.com) to process optimization requests.
+## 🌐 Deployment (Netlify)
 
-## 📊 Dataset Format
+This project is configured for seamless deployment on Netlify:
+- **Build Command**: `npm run build`
+- **Publish Directory**: `dist`
+- **Redirects**: SPA routing is handled via `public/_redirects` and `netlify.toml`.
 
-The application expects a CSV file with the following headers:
+## 📂 Architecture
 
-- `MATCH NO`: Unique identifier for the match.
-- `HOME TEAM`: Name of the home team.
-- `AWAY TEAM`: Name of the away team.
-- `VENUE`: The stadium or location.
-- `START_TIME`: The scheduled date and time (YYYY-MM-DD HH:MM:SS).
+```text
+src/
+├── components/      # Modular UI components (Navbar, Hero, Timeline, etc.)
+├── pages/           # Page layouts (Home.jsx)
+├── index.css        # Global design system & utilities
+└── App.jsx          # Application Entry Point
+```
+
+---
+*Developed with focus on Performance, Stability, and Luxury UX.*
