@@ -24,14 +24,14 @@ const LiveTicker = () => {
               <Trophy className="w-3 h-3 text-yellow-500" />
               Engine Status: <span className="text-yellow-500">Active</span>
             </span>
-            <span>Tournament Model: <span className="text-yellow-500">FIFA Championship v2.4</span></span>
+            <span>Tournament Model: <span className="text-yellow-500">FIFA Championship</span></span>
             <span>Constraint Resolution: <span className="text-yellow-500">99.9% Efficiency</span></span>
             <span>Real-time Pitch Planning: <span className="text-yellow-500">Online</span></span>
             <span className="flex items-center gap-2">
               <Trophy className="w-3 h-3 text-yellow-500" />
               Engine Status: <span className="text-yellow-500">Active</span>
             </span>
-            <span>Tournament Model: <span className="text-yellow-500">FIFA Championship v2.4</span></span>
+            <span>Tournament Model: <span className="text-yellow-500">FIFA Championship</span></span>
             <span>Constraint Resolution: <span className="text-yellow-500">99.9% Efficiency</span></span>
             <span>Real-time Pitch Planning: <span className="text-yellow-500">Online</span></span>
           </motion.div>
@@ -42,7 +42,7 @@ const LiveTicker = () => {
         <div className="shrink-0 flex items-center gap-4">
           <div className="h-4 w-px bg-white/10 mx-2"></div>
           <span className="text-[10px] font-black text-yellow-500 uppercase tracking-widest">
-            v2.4.0-PRAD
+            GREEDY
           </span>
         </div>
       </div>

@@ -63,7 +63,7 @@ const SystemFeedback = ({ isLoading }) => {
               <div className="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
             </div>
             <div className="h-4 w-px bg-white/10 mx-2"></div>
-            <span className="text-[10px] font-mono text-yellow-500/60 uppercase tracking-[0.3em]">Neural Solver // v2.4.1</span>
+            <span className="text-[10px] font-mono text-yellow-500/60 uppercase tracking-[0.3em]">Neural Solver // v2.0</span>
           </div>
           <Cpu className="w-5 h-5 text-yellow-500 animate-pulse" />
         </div>
@@ -97,7 +97,7 @@ const SystemFeedback = ({ isLoading }) => {
           <div className="flex items-center gap-8">
             <div className="flex flex-col gap-1">
               <div className="text-[9px] text-white/40 uppercase font-black tracking-widest">Processing Core</div>
-              <div className="text-xs text-white font-bold">GREEDY_ALPHA_V3</div>
+              <div className="text-xs text-white font-bold">GREEDY_ALPHA_V2</div>
             </div>
             <div className="flex flex-col gap-1">
               <div className="text-[9px] text-white/40 uppercase font-black tracking-widest">Memory Load</div>

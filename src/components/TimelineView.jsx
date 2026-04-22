@@ -508,12 +508,51 @@ const MatchCard = ({ match, index, onDetail }) => {
   );
 };
 
+const formatDate = (dateStr) => {
+  if (!dateStr) return "";
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  // Try parsing DD/MM/YY or DD/MM/YYYY
+  if (dateStr.includes('/')) {
+    const parts = dateStr.split('/');
+    if (parts.length >= 3) {
+      const day = parts[0].padStart(2, '0');
+      const month = parseInt(parts[1], 10);
+      let year = parts[2];
+      if (year.length === 2) year = `20${year}`;
+      if (month >= 1 && month <= 12) {
+        return `${day} ${months[month - 1]} ${year}`;
+      }
+    }
+  }
+  
+  // Try parsing YYYY-MM-DD
+  if (dateStr.includes('-')) {
+    const parts = dateStr.split('-');
+    if (parts.length >= 3) {
+      const year = parts[0];
+      const month = parseInt(parts[1], 10);
+      const day = parts[2].split(' ')[0].padStart(2, '0');
+      if (month >= 1 && month <= 12) {
+        return `${day} ${months[month - 1]} ${year}`;
+      }
+    }
+  }
+
+  return dateStr;
+};
+
 const NextMatchBanner = ({ match, onDetail, onAdjust }) => {
   if (!match) return null;
   const teamA = match.Team_A || match["HOME TEAM"] || match.teamA;
   const teamB = match.Team_B || match["AWAY TEAM"] || match.teamB;
   const venue = match.Venue || match.VENUE || match.venue;
   const time = match.TIME || match.time || "19:30 PM";
+  const rawDate = match.DATE || match.Date || match.date || "";
+  const date = formatDate(rawDate);
 
   return (
     <div className="relative mb-16 md:mb-24 px-4 md:px-0">
@@ -539,13 +578,17 @@ const NextMatchBanner = ({ match, onDetail, onAdjust }) => {
              </h2>
            </div>
  
-           <div className="flex flex-wrap gap-4 md:gap-6 items-center justify-center lg:justify-start">
+           <div className="flex flex-wrap gap-4 md:gap-8 items-center justify-center lg:justify-start">
+             <div className="flex items-baseline gap-2 md:gap-3">
+                <span className="text-[8px] md:text-[9px] font-black text-white/20 uppercase tracking-widest">Date</span>
+                <span className="text-lg md:text-2xl font-black text-white tracking-widest whitespace-nowrap">{date}</span>
+             </div>
              <div className="flex items-baseline gap-2 md:gap-3">
                 <span className="text-[8px] md:text-[9px] font-black text-white/20 uppercase tracking-widest">Time</span>
                 <span className="text-lg md:text-2xl font-black text-white tracking-widest">{time}</span>
              </div>
              <div className="flex items-baseline gap-2 md:gap-3">
-                <span className="text-[8px] md:text-[9px] font-black text-white/20 uppercase tracking-widest">Arena</span>
+                <span className="text-[8px] md:text-[9px] font-black text-white/20 uppercase tracking-widest">Stadion</span>
                 <span className="text-[10px] md:text-sm font-black text-white/60 uppercase tracking-[0.1em]">{venue}</span>
              </div>
            </div>
@@ -629,9 +672,21 @@ const TimelineView = ({ schedule, onOptimize, onUpdateMatch, onAdjust, selectedM
     const rows = schedule.map(m => {
       const score = getMatchScore(m);
       const status = score >= 85 ? 'STABLE' : score >= 70 ? 'TIGHT' : 'RISK';
+      
+      // Clean time: extract only HH:MM if it contains date info
+      let rawTime = m.START_TIME || m.TIME || m.time || "";
+      let cleanTime = rawTime;
+      if (rawTime.includes(' ')) {
+        const parts = rawTime.trim().split(/\s+/);
+        cleanTime = parts[parts.length - 1]; // Take the last part (usually the time)
+      }
+      if (cleanTime.includes(':') && cleanTime.split(':').length > 2) {
+        cleanTime = cleanTime.substring(0, 5); // Trim seconds
+      }
+
       return [
         m.DATE || m.Date || m.date,
-        m.START_TIME || m.TIME || m.time,
+        cleanTime,
         m.HOME_TEAM || m.Team_A,
         m.AWAY_TEAM || m.Team_B,
         m.Venue || m.VENUE || m.venue,
@@ -639,7 +694,11 @@ const TimelineView = ({ schedule, onOptimize, onUpdateMatch, onAdjust, selectedM
       ];
     });
     
-    const csvContent = [headers, ...rows].map(e => e.join(",")).join("\n");
+    // Use quotes to wrap every value to prevent commas in data from breaking columns
+    // Add \uFEFF (BOM) and sep=, so Excel definitely recognizes columns correctly
+    const csvContent = "\uFEFFsep=,\n" + [headers, ...rows]
+      .map(row => row.map(cell => `"${(cell || "").toString().replace(/"/g, '""')}"`).join(","))
+      .join("\n");
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
@@ -758,10 +817,6 @@ const TimelineView = ({ schedule, onOptimize, onUpdateMatch, onAdjust, selectedM
         <div className="mb-12 md:mb-20 space-y-8 md:space-y-12">
           <div className="flex flex-wrap gap-4 items-center justify-between border-b border-white/5 pb-6 md:pb-8">
             <div className="flex gap-6 md:gap-10">
-              <div className="space-y-0.5">
-                <span className="text-[9px] font-black text-white/20 uppercase tracking-widest">Version</span>
-                <span className="block text-[10px] font-black text-white/60 tracking-widest uppercase">2.4.9</span>
-              </div>
               <div className="space-y-0.5">
                 <span className="text-[9px] font-black text-white/20 uppercase tracking-widest">Status</span>
                 <span className="block text-[10px] font-black text-green-500 tracking-widest uppercase">Validated</span>

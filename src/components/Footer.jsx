@@ -60,7 +60,7 @@ const Footer = () => {
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <span className="text-white/20">Version</span>
-                  <span className="text-white">v2.4.1.FIFA</span>
+                  <span className="text-white">v2.0</span>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <span className="text-white/20">Solver</span>
